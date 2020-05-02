@@ -3,7 +3,7 @@ A front-end web application providing Windsor's top 10 spots using the google ma
 
 In order for this app to work, you much change the script tags in index.html, entertainment.html, outdoor.html, and restaurant.html and add your API key to the script tags. Replace "YOUR-API-KEY" with the API key provided to you by Google.
 
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR-API-KEY"></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR-API-KEY&libraries=places&callback=initMap"></script>
 
 # SETTING UP YOUR API KEY
 *From https://developers.google.com/maps/documentation/javascript/get-api-key*
