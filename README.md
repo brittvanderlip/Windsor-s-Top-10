@@ -7,13 +7,13 @@ In order for this app to work, you much change the script tags in index.html, en
 
 # SETTING UP YOUR API KEY
 *From https://developers.google.com/maps/documentation/javascript/get-api-key*
-# Get an API Key
+## Get an API Key
 To use the Maps JavaScript API you must have an API key. The API key is a unique identifier that is used to authenticate requests associated with your project for usage and billing purposes.
 
-# Project Setup
+## Project Setup
 You need a project with a billing account and the Maps JavaScript API enabled. If you do not yet have an project set up and enabled, visit Get Started with Google Maps Platform for full instructions or click the button below if you are new to the platform.
 
-# Get Started
+## Get Started
 
 Get the API key
 You must have at least one API key associated with your project.
@@ -30,4 +30,9 @@ To get an API key:
   (Remember to restrict the API key before using it in production.)
 * Add the API key to your request
 
+### Web App Display
+<img width="1439" alt="Screen Shot 2020-05-02 at 5 41 19 PM" src="https://user-images.githubusercontent.com/46939842/80893030-d126f700-8c9c-11ea-96ba-8ea4497bf605.png">
+<img width="1436" alt="Screen Shot 2020-05-02 at 5 41 32 PM" src="https://user-images.githubusercontent.com/46939842/80893066-09c6d080-8c9d-11ea-92d6-1181b6f3a0dc.png">
+<img width="1438" alt="Screen Shot 2020-05-02 at 5 41 47 PM" src="https://user-images.githubusercontent.com/46939842/80893070-10edde80-8c9d-11ea-83b6-b1388faf5644.png">
+<img width="1440" alt="Screen Shot 2020-05-02 at 5 41 59 PM" src="https://user-images.githubusercontent.com/46939842/80893072-13e8cf00-8c9d-11ea-9e4a-11a8fe987a60.png">
 
