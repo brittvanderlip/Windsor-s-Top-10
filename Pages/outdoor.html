@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Outdoors</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="top10.css"></head>
+  <body>
+    <h1>Top Ten Outdoor Spots</h1>
+    <div class="buttons">
+      <button onclick="location.href='../index.html';"type="button" name="button">Home</button>
+      <button onclick="location.href='restaurants.html';"type="button" name="button">Restuarants</button>
+      <button onclick="location.href='entertainment.html';"type="button" name="button">Entertainment</button>
+    </div>
+    <div id="map"></div>
+    <script>
+      var rest = document.getElementById("rest");
+
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 42.314079, lng: -83.036858},
+          zoom: 12
+        });
+
+        var request = [
+          {
+          //Dieppe Gardens
+          placeId: 'ChIJhRnIuxgtO4gRJzd_422_AIY',
+          fields: ['name', 'formatted_address', 'place_id', 'geometry']
+          },
+          //Jackson Park
+          {
+          placeId: 'ChIJBWpcglksO4gRdRkKLtUF8C4',
+          fields: ['name', 'formatted_address', 'place_id', 'geometry']
+          },
+          //Coventry Gardens
+          {
+          placeId: 'ChIJw6fwwU4rO4gRx_c0IOIIcLo',
+          fields: ['name', 'formatted_address', 'place_id', 'geometry']
+          },
+          //Sandpoint Beach
+          {
+          placeId: 'ChIJGaUmFCnVJIgRA0eMUcdGiN4',
+          fields: ['name', 'formatted_address', 'place_id', 'geometry']
+          },
+          //Devonwood Conservation Area
+          {
+          placeId: 'ChIJk9PH8eQrO4gRIw3U6v7ZgLo',
+          fields: ['name', 'formatted_address', 'place_id', 'geometry']
+          },
+          //Peche Island
+          {
+          placeId: 'ChIJBzT-dkfVJIgRnV3stLwQqQw',
+          fields: ['name', 'formatted_address', 'place_id', 'geometry']
+          },
+          //Charles Clark Square
+          {
+          placeId: 'ChIJvSx54B8tO4gR3ttEFTLLYMA',
+          fields: ['name', 'formatted_address', 'place_id', 'geometry']
+          },
+          //Malden Park
+          {
+          placeId: 'ChIJ5favuektO4gRlDUGKAi8c1g',
+          fields: ['name', 'formatted_address', 'place_id', 'geometry']
+          },
+          //Ganatchio Trail
+          {
+          placeId: 'EihHYW5hdGNoaW8gVHJhaWwsIFdpbmRzb3IsIE9OIE44UiwgQ2FuYWRhIi4qLAoUChIJ4WJ4d5UqO4gRJnRc6PqaoskSFAoSCWuIT7XBKjuIEVHc_CeV1Gy2',
+          fields: ['name', 'formatted_address', 'place_id', 'geometry']
+          },
+          //Ford Test Track Park
+          {
+          placeId: 'ChIJd1nxbGQrO4gRBcb-XD5Vjmw',
+          fields: ['name', 'formatted_address', 'place_id', 'geometry']
+          }
+      ]
+
+        var infowindow = new google.maps.InfoWindow();
+        var service = new google.maps.places.PlacesService(map);
+        for(var i = 0; i < 10; i++){
+          service.getDetails(request[i], function(place, status) {
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
+              var marker = new google.maps.Marker({
+                map: map,
+                position: place.geometry.location
+              });
+              google.maps.event.addListener(marker, 'click', function() {
+                infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+                  'Place ID: ' + place.place_id + '<br>' +
+                  place.formatted_address + '</div>');
+                infowindow.open(map, this);
+              });
+            }
+          });
+        }
+
+
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR-API-KEY&libraries=places&callback=initMap">
+    </script>
+  </body>
+</html>

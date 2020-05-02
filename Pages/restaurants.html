@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Restaurants</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="top10.css"></head>
+  <body>
+    <h1>Top Ten Restaurants</h1>
+    <div class="buttons">
+      <button onclick="location.href='../index.html';"type="button" name="button">Home</button>
+      <button onclick="location.href='entertainment.html';"type="button" name="button">Entertainment</button>
+      <button onclick="location.href='outdoor.html';"type="button" name="button">Outdoors</button>
+    </div>
+    <div id="map"></div>
+    <script>
+      var rest = document.getElementById("rest");
+
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 42.314079, lng: -83.036858},
+          zoom: 12
+        });
+
+        var request = [
+          //Eddy's Mediterranean Bistro
+          {
+          placeId: 'ChIJF5xJPF8sO4gRtP-xO51AlTg',
+          fields: ['name', 'formatted_address', 'place_id', 'geometry']
+          },
+          //Stacks breakfast
+          {
+          placeId: 'ChIJu95PAsEqO4gRo8alV9tCUYU',
+          fields: ['name', 'formatted_address', 'place_id', 'geometry']
+          },
+          //Spago
+          {
+          placeId: ' ChIJlU7Pcu8sO4gRw-HueP2wCO8',
+          fields: ['name', 'formatted_address', 'place_id', 'geometry']
+          },
+          //Mezzo
+          {
+          placeId: 'ChIJgf3d4e4sO4gRmiHjBO7RE48',
+          fields: ['name', 'formatted_address', 'place_id', 'geometry']
+          },
+          //Carrots N Dates
+          {
+          placeId: 'ChIJOT2x0r4sO4gRpLAdJZqFeT0',
+          fields: ['name', 'formatted_address', 'place_id', 'geometry']
+          },
+          //Twisted Apron
+          {
+          placeId: 'ChIJIassP78sO4gRYT8NpbVU5Fo',
+          fields: ['name', 'formatted_address', 'place_id', 'geometry']
+          },
+          //KOMA
+          {
+          placeId: 'ChIJ9SfnyBcsO4gR0ogm4E4Ptfg',
+          fields: ['name', 'formatted_address', 'place_id', 'geometry']
+          },
+          //Mamo Burger Bar
+          {
+          placeId: 'ChIJ_xkwLpIsO4gRoSvr6aAQVI0',
+          fields: ['name', 'formatted_address', 'place_id', 'geometry']
+          },
+          //Toscana
+          {
+          placeId: 'ChIJV_iwlqguO4gRgxQIaG5v_Jg',
+          fields: ['name', 'formatted_address', 'place_id', 'geometry']
+          },
+          //Jose's
+          {
+          placeId: 'ChIJ54K4xWssO4gRgGv4oQoHo34',
+          fields: ['name', 'formatted_address', 'place_id', 'geometry']
+          }
+      ]
+
+        var infowindow = new google.maps.InfoWindow();
+        var service = new google.maps.places.PlacesService(map);
+        for(var i = 0; i < 10; i++){
+          service.getDetails(request[i], function(place, status) {
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
+              var marker = new google.maps.Marker({
+                map: map,
+                position: place.geometry.location
+              });
+              google.maps.event.addListener(marker, 'click', function() {
+                infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+                  'Place ID: ' + place.place_id + '<br>' +
+                  place.formatted_address + '</div>');
+                infowindow.open(map, this);
+              });
+            }
+          });
+        }
+
+
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR-API-KEY&libraries=places&callback=initMap">
+    </script>
+  </body>
+</html>

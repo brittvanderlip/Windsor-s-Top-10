@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Entertainment</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="top10.css"></head>
+  <body>
+    <h1>Top Ten Entertainment</h1>
+    <div class="buttons">
+      <button onclick="location.href='../index.html';"type="button" name="button">Home</button>
+      <button onclick="location.href='restaurants.html';"type="button" name="button">Restuarants</button>
+      <button onclick="location.href='outdoor.html';"type="button" name="button">Outdoors</button>
+    </div>
+    <div id="map"></div>
+    <script>
+      var rest = document.getElementById("rest");
+
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 42.314079, lng: -83.036858},
+          zoom: 12
+        });
+
+        var request = [
+          {
+          //
+          placeId: 'ChIJqWH_798sO4gRg2mniPI_ecg',
+          fields: ['name', 'formatted_address', 'place_id', 'geometry']
+          },
+          //Olde Walkerville Theatre
+          {
+          placeId: 'ChIJEV0l9MAsO4gRK_0trn548cc',
+          fields: ['name', 'formatted_address', 'place_id', 'geometry']
+          },
+          //Phog Lounge
+          {
+          placeId: 'ChIJZ6xPxB4tO4gR-CftdKCN1o0',
+          fields: ['name', 'formatted_address', 'place_id', 'geometry']
+          },
+          //Chrysler Theatre
+          {
+          placeId: 'ChIJMcdCthgtO4gRRiBkvssXdSc',
+          fields: ['name', 'formatted_address', 'place_id', 'geometry']
+          },
+          //Art In The Park
+          {
+          placeId: 'ChIJCSZgjpUsO4gR9UTkx-KCj8o',
+          fields: ['name', 'formatted_address', 'place_id', 'geometry']
+          },
+          //SkyZone
+          {
+          placeId: 'ChIJGyCHh8EqO4gRRvfWE34-pts',
+          fields: ['name', 'formatted_address', 'place_id', 'geometry']
+          },
+          //Silver City
+          {
+          placeId: 'ChIJAYZ4CGMpO4gRUUnOQVHOYdU',
+          fields: ['name', 'formatted_address', 'place_id', 'geometry']
+          },
+          //Art Gallery of Windsor
+          {
+          placeId: 'ChIJ_2PE9xgtO4gRMIbRiSW8sio',
+          fields: ['name', 'formatted_address', 'place_id', 'geometry']
+          },
+          //Adventure Bay Family Water Park
+          {
+          placeId: 'ChIJnxXRCBktO4gRTFh9X9Nw908',
+          fields: ['name', 'formatted_address', 'place_id', 'geometry']
+          },
+          //Exodus Escape Rooms
+          {
+          placeId: 'ChIJ_8t3nPYsO4gRd0dLPAd2Ejo',
+          fields: ['name', 'formatted_address', 'place_id', 'geometry']
+          }
+      ]
+
+        var infowindow = new google.maps.InfoWindow();
+        var service = new google.maps.places.PlacesService(map);
+        for(var i = 0; i < 10; i++){
+          service.getDetails(request[i], function(place, status) {
+            if (status === google.maps.places.PlacesServiceStatus.OK) {
+              var marker = new google.maps.Marker({
+                map: map,
+                position: place.geometry.location
+              });
+              google.maps.event.addListener(marker, 'click', function() {
+                infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+                  'Place ID: ' + place.place_id + '<br>' +
+                  place.formatted_address + '</div>');
+                infowindow.open(map, this);
+              });
+            }
+          });
+        }
+
+
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=YOUR-API-KEY&libraries=places&callback=initMap">
+    </script>
+  </body>
+</html>

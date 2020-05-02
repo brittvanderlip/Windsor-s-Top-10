@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+html {
+  height: 100%;
+  width: 100%;
+  background: url(./Images/windsor.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+body{
+  display: flex;
+}
+
+h1{
+  color: #595959;
+  text-shadow: 1px 1px #FFF;
+  margin: 20px auto;
+  font-size: 5em;
+  font-family: 'Permanent Marker';
+}
+
+.buttons {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+button {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10%;
+  font-family: "Permanent Marker";
+  color: #595959;
+  font-size: 2rem;
+  border: none;
+}
+
+button:hover {
+  background: #595959;
+  color: #FFFFFF;
+  cursor: pointer;
+}
